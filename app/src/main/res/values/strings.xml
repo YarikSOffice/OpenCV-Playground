@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">OpenCV Playground</string>
+    <string name="stitch_mode_scans">Scans</string>
+    <string name="stitch_mode_panorama">Panorama</string>
+    <string name="pick_images_button">Pick images</string>
+    <string name="processing_images">Processing images</string>
+</resources>

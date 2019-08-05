@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId 'com.yariksoffice.javaopencvplaygroung'
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        incremental true
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation "com.github.chrisbanes:PhotoView:2.3.0"
+
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.11'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+
+    implementation 'org.bytedeco:javacv:1.4.4'
+    implementation 'org.bytedeco.javacpp-presets:opencv:4.0.1-1.4.4:android-arm64'
+    // u can drop redundant platforms here
+    implementation 'org.bytedeco.javacpp-presets:opencv:4.0.1-1.4.4:android-arm'
+    implementation 'org.bytedeco.javacpp-presets:opencv:4.0.1-1.4.4:android-x86'
+}
