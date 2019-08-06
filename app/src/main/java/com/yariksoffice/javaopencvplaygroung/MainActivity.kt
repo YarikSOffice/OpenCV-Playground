@@ -23,6 +23,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,12 +45,12 @@ class MainActivity : AppCompatActivity() {
     private fun setUpViews() {
         imageView = findViewById(R.id.image)
         radioGroup = findViewById(R.id.radio_group)
-        imageStitcher = ImageStitcher(FileUtil(applicationContext))
         findViewById<View>(R.id.button).setOnClickListener { chooseImages() }
     }
 
     @Suppress("DEPRECATION")
     private fun setUpStitcher() {
+        imageStitcher = ImageStitcher(FileUtil(applicationContext))
         val dialog = ProgressDialog(this).apply {
             setMessage(getString(R.string.processing_images))
             setCancelable(false)
@@ -99,16 +100,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun processResult(output: StitcherOutput) {
         when (output) {
-            is Success -> showImage(output)
+            is Success -> showImage(output.file)
             is Failure -> processError(output.e)
         }
     }
 
-    private fun showImage(output: Success) {
-        Picasso.with(this)
-                .load(output.file)
-                .memoryPolicy(MemoryPolicy.NO_STORE, MemoryPolicy.NO_CACHE)
-                .into(imageView)
+    private fun showImage(file: File) {
+        Picasso.with(this).load(file).into(imageView)
     }
 
     override fun onDestroy() {
