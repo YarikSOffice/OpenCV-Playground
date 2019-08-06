@@ -106,7 +106,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showImage(file: File) {
-        Picasso.with(this).load(file).into(imageView)
+        Picasso.with(this).load(file)
+                .memoryPolicy(MemoryPolicy.NO_STORE, MemoryPolicy.NO_CACHE)
+                .into(imageView)
     }
 
     override fun onDestroy() {
