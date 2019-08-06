@@ -28,18 +28,18 @@ class ImageStitcher(private val fileUtil: FileUtil) {
 
     fun stitchImages(input: StitcherInput): Single<StitcherOutput> {
         return Single.fromCallable {
-            fileUtil.cleanUpWorkingDirectory()
             val files = fileUtil.urisToFiles(input.uris)
             val vector = filesToMatVector(files)
             stitch(vector, input.stitchMode)
         }
     }
 
-    private fun stitch(images: MatVector, stitchMode: Int): StitcherOutput {
+    private fun stitch(vector: MatVector, stitchMode: Int): StitcherOutput {
         val result = Mat()
         val stitcher = Stitcher.create(stitchMode)
-        val status = stitcher.stitch(images, result)
+        val status = stitcher.stitch(vector, result)
 
+        fileUtil.cleanUpWorkingDirectory()
         return if (status == Stitcher.OK) {
             val resultFile = fileUtil.createResultFile()
             imwrite(resultFile.absolutePath, result)

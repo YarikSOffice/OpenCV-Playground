@@ -34,16 +34,22 @@ class MainActivity : AppCompatActivity() {
 
     private val stitcherInputRelay = PublishSubject.create<StitcherInput>()
 
-    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setUpViews()
+        setUpStitcher()
+    }
+
+    private fun setUpViews() {
         imageView = findViewById(R.id.image)
         radioGroup = findViewById(R.id.radio_group)
         imageStitcher = ImageStitcher(FileUtil(applicationContext))
-
         findViewById<View>(R.id.button).setOnClickListener { chooseImages() }
+    }
 
+    @Suppress("DEPRECATION")
+    private fun setUpStitcher() {
         val dialog = ProgressDialog(this).apply {
             setMessage(getString(R.string.processing_images))
             setCancelable(false)
