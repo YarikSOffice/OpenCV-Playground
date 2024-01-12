@@ -4,4 +4,6 @@
     <string name="stitch_mode_panorama">Panorama</string>
     <string name="pick_images_button">Pick images</string>
     <string name="processing_images">Processing images</string>
+    <string name="go_app">Go app</string>
+    <string name="edit1">edit</string>
 </resources>

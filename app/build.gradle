@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
     defaultConfig {
         applicationId 'com.yariksoffice.javaopencvplaygroung'
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -44,4 +45,15 @@ dependencies {
     // u can drop redundant platforms here
     implementation 'org.bytedeco.javacpp-presets:opencv:4.0.1-1.4.4:android-arm'
     implementation 'org.bytedeco.javacpp-presets:opencv:4.0.1-1.4.4:android-x86'
+
+
+    implementation 'androidx.camera:camera-core:1.0.0'
+    implementation 'androidx.camera:camera-camera2:1.0.0'
+    implementation 'androidx.camera:camera-lifecycle:1.0.0'
+    implementation "androidx.camera:camera-view:1.0.0-alpha23"
+
+    implementation 'pub.devrel:easypermissions:0.4.0'
+
+    implementation 'com.github.mukeshsolanki:photofilter:1.0.2'
 }
+

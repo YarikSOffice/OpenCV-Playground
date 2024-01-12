@@ -43,6 +43,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:text="@string/pick_images_button" />
+    <Button
+        android:id="@+id/buttonapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/go_app" />
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/image"

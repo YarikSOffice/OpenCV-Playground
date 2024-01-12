@@ -46,6 +46,12 @@ class MainActivity : AppCompatActivity() {
         imageView = findViewById(R.id.image)
         radioGroup = findViewById(R.id.radio_group)
         findViewById<View>(R.id.button).setOnClickListener { chooseImages() }
+
+        findViewById<View>(R.id.buttonapp).setOnClickListener {
+            // Open the CameraActivity when buttonapp is clicked
+            val intent = Intent(this, CameraActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     @Suppress("DEPRECATION")
